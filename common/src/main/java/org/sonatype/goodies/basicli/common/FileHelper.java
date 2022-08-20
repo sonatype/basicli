@@ -222,4 +222,12 @@ public class FileHelper
       checkState(Files.isWritable(dir), "Directory not writable: %s", dir);
     }
   }
+
+  public static File createTempFile(final String prefix, final String suffix) throws IOException {
+    checkNotNull(prefix);
+    checkNotNull(suffix);
+    File file = File.createTempFile(prefix, suffix).getCanonicalFile();
+    Files.deleteIfExists(file.toPath());
+    return file;
+  }
 }
