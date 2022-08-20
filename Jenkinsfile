@@ -3,7 +3,7 @@ library('jenkins-shared')
 
 mavenSnapshotPipeline(
   javaVersion: 'OpenJDK 11',
-  mavenVersion: 'Maven 3.6.x',
+  useMvnw: true,
   usePublicSettingsXmlFile: true,
   useEventSpy: false,
   deployBranch: 'main',
