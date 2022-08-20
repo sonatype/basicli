@@ -48,7 +48,7 @@ public class CliApplicationRunner
       return result;
     });
 
-    int code = 0;
+    int code;
     try {
       code = cl.execute(args);
     }
