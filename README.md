@@ -14,7 +14,7 @@
 -->
 # Goodies :: CLI support
 
-TODO
+Support for CLI oriented applications.
 
 ## Building
 
