@@ -33,6 +33,7 @@
     <logback.version>1.2.11</logback.version>
     <guava.version>31.1-jre</guava.version>
     <picocli.version>4.6.3</picocli.version>
+    <ant.version>1.10.11</ant.version>
     <junit5.version>5.9.0</junit5.version>
     <hamcrest.version>2.2</hamcrest.version>
     <mockito.version>4.7.0</mockito.version>
@@ -50,6 +51,12 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-simple</artifactId>
         <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>${logback.version}</version>
       </dependency>
 
       <dependency>
@@ -107,6 +114,18 @@
       </dependency>
 
       <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant</artifactId>
+        <version>${ant.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant-launcher</artifactId>
+        <version>${ant.version}</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
         <version>${junit5.version}</version>
@@ -155,6 +174,20 @@
       </dependency>
 
       <!-- INTERNAL -->
+
+      <dependency>
+        <groupId>org.sonatype.goodies.basicli</groupId>
+        <artifactId>basicli-common</artifactId>
+        <version>1-SNAPSHOT</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.sonatype.goodies.basicli</groupId>
+        <artifactId>basicli-support</artifactId>
+        <version>1-SNAPSHOT</version>
+        <type>jar</type>
+      </dependency>
 
       <dependency>
         <groupId>org.sonatype.goodies.basicli</groupId>

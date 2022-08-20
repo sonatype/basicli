@@ -1,13 +1,12 @@
-@Library(['private-pipeline-library', 'jenkins-shared']) _
-
-def branchName = env.BRANCH_NAME ?: gitBranch(env)
-def deployBranch = 'main'
+library('private-pipeline-library')
+library('jenkins-shared')
 
 mavenSnapshotPipeline(
   javaVersion: 'OpenJDK 11',
-  mavenVersion: 'Maven 3.6.x',
+  useMvnw: true,
   usePublicSettingsXmlFile: true,
   useEventSpy: false,
+  deployBranch: 'main',
   mavenOptions: [
     "-Dit",
     "-Dbuild.notes='b:${BRANCH_NAME}, j:${JOB_NAME}, n:#${BUILD_NUMBER}'"
@@ -15,9 +14,8 @@ mavenSnapshotPipeline(
   testResults: [ '**/target/*-reports/*.xml' ],
   iqPolicyEvaluation: { stage ->
     nexusPolicyEvaluation iqStage: stage, iqApplication: 'basicli',
-      iqScanPatterns: [[ scanPattern: 'scan_nothing' ]]
-  },
-  deployCondition: {
-    return deployBranch
+      iqScanPatterns: [
+        [ scanPattern: '**/target/module.xml' ]
+      ]
   }
 )

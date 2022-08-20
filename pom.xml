@@ -68,6 +68,8 @@
   <modules>
     <module>bom</module>
     <module>testbase</module>
+    <module>common</module>
+    <module>support</module>
   </modules>
 
   <build>
@@ -85,7 +87,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>[3.8,)</version>
+                  <version>[3.6,)</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
                   <version>[11,)</version>
