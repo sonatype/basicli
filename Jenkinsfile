@@ -3,7 +3,7 @@ library('jenkins-shared')
 
 mavenSnapshotPipeline(
   javaVersion: 'OpenJDK 11',
-  mavenVersion: 'Maven 3.8.x',
+  mavenVersion: 'Maven 3.6.x',
   usePublicSettingsXmlFile: true,
   useEventSpy: false,
   deployBranch: 'main',
@@ -14,6 +14,8 @@ mavenSnapshotPipeline(
   testResults: [ '**/target/*-reports/*.xml' ],
   iqPolicyEvaluation: { stage ->
     nexusPolicyEvaluation iqStage: stage, iqApplication: 'basicli',
-      iqScanPatterns: [[ scanPattern: '**/target/module.xml' ]]
+      iqScanPatterns: [
+        [ scanPattern: '**/target/module.xml' ]
+      ]
   }
 )
