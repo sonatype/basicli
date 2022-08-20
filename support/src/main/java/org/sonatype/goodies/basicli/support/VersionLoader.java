@@ -14,6 +14,7 @@ package org.sonatype.goodies.basicli.support;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Map;
 import java.util.Properties;
 import javax.annotation.Nullable;
 
@@ -83,7 +84,12 @@ public class VersionLoader
       catch (Exception e) {
         log.warn("Failed to load resource: {}", RESOURCE, e);
       }
-      log.debug("Properties: {}", result);
+      if (log.isErrorEnabled()) {
+        log.debug("Properties");
+        for (Map.Entry<Object,Object> entry : result.entrySet()) {
+          log.debug("  {}={}", entry.getKey(), entry.getValue());
+        }
+      }
     }
     return result;
   }
