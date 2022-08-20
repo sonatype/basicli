@@ -49,6 +49,7 @@ public class BaseDirectory
   }
 
   public File resolve(final String path) {
+    requireNonNull(path);
     try {
       return new File(getFile(), path).getCanonicalFile();
     }

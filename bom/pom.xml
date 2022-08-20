@@ -54,6 +54,12 @@
 
       <dependency>
         <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
         <version>${logback.version}</version>
       </dependency>
@@ -155,6 +161,20 @@
       </dependency>
 
       <!-- INTERNAL -->
+
+      <dependency>
+        <groupId>org.sonatype.goodies.basicli</groupId>
+        <artifactId>basicli-common</artifactId>
+        <version>1-SNAPSHOT</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.sonatype.goodies.basicli</groupId>
+        <artifactId>basicli-support</artifactId>
+        <version>1-SNAPSHOT</version>
+        <type>jar</type>
+      </dependency>
 
       <dependency>
         <groupId>org.sonatype.goodies.basicli</groupId>
