@@ -19,6 +19,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Comparator;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -193,15 +194,16 @@ public class FileHelper
     checkState(Files.isDirectory(dir), "Not a directory: %s", dir);
 
     try (Stream<Path> stream = Files.walk(dir)) {
-        .sorted(Comparator.reverseOrder())
-        .forEach(file -> {
-          try {
-            Files.deleteIfExists(file);
-          }
-          catch (IOException e) {
-            log.warn("Failed to delete file: {}", file, e);
-          }
-        });
+      stream.sorted(Comparator.reverseOrder())
+          .forEach(file -> {
+            try {
+              Files.deleteIfExists(file);
+            }
+            catch (IOException e) {
+              log.warn("Failed to delete file: {}", file, e);
+            }
+          });
+    }
   }
 
   /**
