@@ -223,6 +223,11 @@ public class FileHelper
     }
   }
 
+  public static void createDirectories(final File dir) throws IOException {
+    checkNotNull(dir);
+    createDirectories(dir.toPath());
+  }
+
   public static File createTempFile(final String prefix, final String suffix) throws IOException {
     checkNotNull(prefix);
     checkNotNull(suffix);
