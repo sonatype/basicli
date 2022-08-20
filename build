@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+basename=`basename $0`
+dirname=`dirname $0`
+dirname=`cd "$dirname" && pwd`
+cd "$dirname"
+
+source ./build.config
+
+# load optional config
+if [ -f ./build.rc ]; then
+  source ./build.rc
+fi
+
+# show message and exit
+function die {
+  echo "$1"
+  exit 1
+}
+
+# show usage and exit
+function usage {
+  if [[ -z "$1" ]]; then
+    echo "usage: $basename <command> [options]"
+  else
+    echo "usage: $basename $1"
+  fi
+  exit 2
+}
+
+# run self
+function self {
+  $0 "$@"
+}
+
+if [[ -z "$mvn_options" ]]; then
+  mvn_options=""
+fi
+
+# run maven
+function mvn {
+  ./mvnw ${mvn_options} "$@"
+}
+
+command="$1"; shift
+
+# complain if no command is given
+if [ -z "$command" ]; then
+  usage
+fi
+
+case "$command" in
+  # change the version of the project
+  change-version)
+    newVersion="$1"
+    if [ -z "$newVersion" ]; then
+      usage "$command <version>"
+    fi
+
+    mvn org.eclipse.tycho:tycho-versions-plugin:1.2.0:set-version \
+      -Dartifacts=${project} \
+      -Dproperties=${project}.version \
+      -DnewVersion="$newVersion"
+    ;;
+
+  # check license headers
+  license-check)
+    mvn -f ./pom.xml -N -P -include-private com.mycila:license-maven-plugin:check
+    if [ -f "private/pom.xml" ]; then
+      mvn -f private/pom.xml -N com.mycila:license-maven-plugin:check "$@"
+    fi
+    ;;
+
+  # format license headers
+  license-format)
+    mvn -f ./pom.xml -N -P -include-private com.mycila:license-maven-plugin:format
+    if [ -f "private/pom.xml" ]; then
+      mvn -f private/pom.xml -N com.mycila:license-maven-plugin:format "$@"
+    fi
+    ;;
+
+  *)
+    # attempt to lookup command function
+    fn="command_$command"
+    if [ "$(type -t $fn)" = 'function' ]; then
+      $fn "$@"
+    else
+      # complain about missing command function
+      echo "Unknown command: $command"
+      usage
+    fi
+    ;;
+esac
