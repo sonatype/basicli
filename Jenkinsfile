@@ -6,7 +6,7 @@ def deployBranch = 'main'
 mavenSnapshotPipeline(
   javaVersion: 'OpenJDK 11',
   mavenVersion: 'Maven 3.6.x',
-  usePublicSettingsXmlFile: false,
+  usePublicSettingsXmlFile: true,
   useEventSpy: false,
   mavenOptions: [
     "-Dit",
