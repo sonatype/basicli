@@ -31,9 +31,7 @@ public final class ExitNotification
   }
 
   @Override
-  public String toString() {
-    return getClass().getSimpleName() + "{" +
-        "code=" + code +
-        '}';
+  public String getMessage() {
+    return String.format("Code: %s", code);
   }
 }
