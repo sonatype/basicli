@@ -54,7 +54,7 @@ public class VersionLoader
   @Nullable
   private final URL resource;
 
-  public VersionLoader(final Class owner) {
+  public VersionLoader(final Class<?> owner) {
     checkNotNull(owner);
     this.resource = owner.getResource(RESOURCE);
   }
@@ -84,7 +84,8 @@ public class VersionLoader
       catch (Exception e) {
         log.warn("Failed to load resource: {}", RESOURCE, e);
       }
-      if (log.isErrorEnabled()) {
+
+      if (log.isDebugEnabled()) {
         log.debug("Properties");
         for (Map.Entry<Object,Object> entry : result.entrySet()) {
           log.debug("  {}={}", entry.getKey(), entry.getValue());
