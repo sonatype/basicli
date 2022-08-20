@@ -192,7 +192,7 @@ public class FileHelper
 
     checkState(Files.isDirectory(dir), "Not a directory: %s", dir);
 
-    Files.walk(dir)
+    try (Stream<Path> stream = Files.walk(dir)) {
         .sorted(Comparator.reverseOrder())
         .forEach(file -> {
           try {
