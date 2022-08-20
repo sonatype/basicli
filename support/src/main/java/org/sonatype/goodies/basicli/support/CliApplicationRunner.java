@@ -38,8 +38,13 @@ public class CliApplicationRunner
     cl.setUsageHelpAutoWidth(true);
     cl.setExecutionStrategy(parsed -> {
       application.init();
-      int result = new RunAll().execute(parsed);
-      application.destroy();
+      int result;
+      try {
+        result = new RunAll().execute(parsed);
+      }
+      finally {
+        application.destroy();
+      }
       return result;
     });
 
