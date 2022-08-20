@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# Goodies :: CLI support
+# BasicCLI
 
 Support for CLI oriented applications.
 
