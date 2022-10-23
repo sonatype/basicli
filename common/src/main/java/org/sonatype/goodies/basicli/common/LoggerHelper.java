@@ -10,14 +10,16 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
-package org.sonatype.goodies.basicli.common
+package org.sonatype.goodies.basicli.common;
 
-import org.slf4j.Logger
+import org.slf4j.Logger;
 
 /**
  * Logger helpers.
+ *
+ * @since ???
  */
-class LoggerHelper
+public class LoggerHelper
 {
   private LoggerHelper() {
     // empty
@@ -26,22 +28,22 @@ class LoggerHelper
   /**
    * Maybe log verbose throwable details.
    */
-  static void maybeLogVerbose(final Logger logger,
-                              final Level level,
-                              final CharSequence message,
-                              final Throwable cause)
+  public static void maybeLogVerbose(final Logger logger,
+                                     final Level level,
+                                     final CharSequence message,
+                                     final Throwable cause)
   {
-    if (logger.traceEnabled) {
+    if (logger.isTraceEnabled()) {
       // when TRACE enabled, include cause stack
-      level.log(logger, message as String, cause)
+      level.log(logger, String.valueOf(message), cause);
     }
-    else if (logger.debugEnabled) {
+    else if (logger.isDebugEnabled()) {
       // when DEBUG enabled, summarize cause
-      level.log(logger, "$message; $cause")
+      level.log(logger, "{}; {}", message, String.valueOf(cause));
     }
     else {
       // otherwise omit cause
-      level.log(logger, message as String)
+      level.log(logger, String.valueOf(message));
     }
   }
 }
