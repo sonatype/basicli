@@ -116,27 +116,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <dependencies>
-          <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-eclipse-compiler</artifactId>
-            <version>3.7.0</version>
-          </dependency>
-          <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-eclipse-batch</artifactId>
-            <version>3.0.8-01</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <!-- see: https://github.com/groovy/groovy-eclipse/wiki/Groovy-Eclipse-Maven-plugin -->
-          <compilerId>groovy-eclipse-compiler</compilerId>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>com.sonatype.clm</groupId>
         <artifactId>clm-maven-plugin</artifactId>
         <executions>

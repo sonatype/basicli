@@ -10,24 +10,23 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
-package org.sonatype.goodies.basicli.support
+package org.sonatype.goodies.basicli.support;
 
-import groovy.util.logging.Slf4j
+import groovy.transform.NullCheck;
 
 /**
- * Configuration manager.
+ * System property helpers.
  *
  * @since ???
  */
-@Singleton
-@Slf4j
-class Config
+public class SystemPropertyHelper
 {
-  void apply(final File file) {
-    log.debug("Applying: $file")
-    def shell = new GroovyShell(new Binding([
-        log: log
-    ]))
-    shell.evaluate(file)
+  private SystemPropertyHelper() {
+    // empty
+  }
+
+  @NullCheck
+  static void set(final String name, final String value) {
+    System.setProperty(name, value);
   }
 }
