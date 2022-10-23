@@ -12,8 +12,6 @@
  */
 package org.sonatype.goodies.basicli.support;
 
-import groovy.transform.NullCheck;
-
 /**
  * System property helpers.
  *
@@ -25,7 +23,6 @@ public class SystemPropertyHelper
     // empty
   }
 
-  @NullCheck
   static void set(final String name, final String value) {
     System.setProperty(name, value);
   }
