@@ -14,8 +14,6 @@ package org.sonatype.goodies.basicli.common;
 
 import org.slf4j.Logger;
 
-import static java.util.Objects.requireNonNull;
-
 /**
  * Helper to log a block of text in a marked section of the log.
  *
