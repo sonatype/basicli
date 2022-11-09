@@ -10,16 +10,33 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
-package org.sonatype.goodies.basicli.testbase;
+package org.sonatype.goodies.basicli.support;
 
-// FIXME: remove after unit-tests are in place
+import java.util.Map;
 
-import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class PlaceholderTest
+/**
+ * System property helpers.
+ *
+ * @since ???
+ */
+public class SystemPropertyHelper
 {
-  @Test
-  void fixme() {
-    // FIXME: remove after unit-tests are in place
+  private static final Logger log = LoggerFactory.getLogger(SystemPropertyHelper.class);
+
+  private SystemPropertyHelper() {
+    // empty
+  }
+
+  static void set(final String name, final String value) {
+    log.trace("Set: '{}' -> '{}'", name, value);
+    System.setProperty(name, value);
+  }
+
+  public static void merge(final Map<String,String> source) {
+    log.trace("Merge: $source");
+    source.forEach(SystemPropertyHelper::set);
   }
 }

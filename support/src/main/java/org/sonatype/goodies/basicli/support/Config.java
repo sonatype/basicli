@@ -10,24 +10,36 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
-package org.sonatype.goodies.basicli.support
+package org.sonatype.goodies.basicli.support;
 
-import groovy.util.logging.Slf4j
+import java.io.File;
+import java.io.IOException;
+
+import com.google.common.collect.ImmutableMap;
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Configuration manager.
  *
  * @since ???
  */
-@Singleton
-@Slf4j
-class Config
+public class Config
 {
-  void apply(final File file) {
-    log.debug("Applying: $file")
-    def shell = new GroovyShell(new Binding([
-        log: log
-    ]))
-    shell.evaluate(file)
+  private Config() {
+    // empty
+  }
+
+  private static final Logger log = LoggerFactory.getLogger(Config.class);
+
+  public static void apply(final File file) throws IOException {
+    log.debug("Applying: {}", file);
+    Binding binding = new Binding(ImmutableMap.of(
+        "log", log
+    ));
+    GroovyShell shell = new GroovyShell(binding);
+    shell.evaluate(file);
   }
 }
