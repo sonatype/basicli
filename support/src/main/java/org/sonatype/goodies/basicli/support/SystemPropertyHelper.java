@@ -10,34 +10,33 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
-package org.sonatype.goodies.basicli.support
+package org.sonatype.goodies.basicli.support;
 
-import groovy.transform.NullCheck
-import groovy.util.logging.Slf4j
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * System property helpers.
  *
  * @since ???
  */
-@Slf4j
-class SystemPropertyHelper
+public class SystemPropertyHelper
 {
+  private static final Logger log = LoggerFactory.getLogger(SystemPropertyHelper.class);
+
   private SystemPropertyHelper() {
     // empty
   }
 
-  @NullCheck
   static void set(final String name, final String value) {
-    log.trace("Set: '$name' -> '$value'")
-    System.setProperty(name, value)
+    log.trace("Set: '{}' -> '{}'", name, value);
+    System.setProperty(name, value);
   }
 
-  @NullCheck
-  static void merge(final Map<String,String> source) {
-    log.trace("Merge: $source")
-    source.each { name, value ->
-      set(name, value)
-    }
+  public static void merge(final Map<String,String> source) {
+    log.trace("Merge: $source");
+    source.forEach(SystemPropertyHelper::set);
   }
 }
