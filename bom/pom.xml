@@ -34,7 +34,7 @@
     <guava.version>31.1-jre</guava.version>
     <picocli.version>4.7.0</picocli.version>
     <ant.version>1.10.11</ant.version>
-    <junit5.version>5.9.0</junit5.version>
+    <junit5.version>5.9.1</junit5.version>
     <hamcrest.version>2.2</hamcrest.version>
     <mockito.version>4.7.0</mockito.version>
   </properties>
