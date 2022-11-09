@@ -28,10 +28,6 @@ public class LogMarker
   }
 
   public static void mark(final Logger logger, Level level, final String prefix, final String text) {
-    requireNonNull(logger);
-    requireNonNull(level);
-    requireNonNull(prefix);
-    requireNonNull(text);
     level.log(logger, "{}\n----8<----\n{}\n---->8----", prefix, text);
   }
 }
