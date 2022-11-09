@@ -30,7 +30,8 @@
     </encoder>
   </appender>
 
-  <logger name="com.sonatype" level="TRACE"/>
+  <logger name="org.sonatype" level="DEBUG"/>
+  <logger name="com.sonatype" level="DEBUG"/>
 
   <root level="INFO">
     <appender-ref ref="CONSOLE"/>
