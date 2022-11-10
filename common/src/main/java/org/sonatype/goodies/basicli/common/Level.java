@@ -55,6 +55,7 @@ public enum Level
         return logger.isWarnEnabled();
       case ERROR:
         return logger.isErrorEnabled();
+      case OFF:
       default:
         return false;
     }
@@ -77,6 +78,9 @@ public enum Level
         break;
       case ERROR:
         logger.error(msg);
+        break;
+      case OFF:
+        // ignore
         break;
       default:
         throw new UnsupportedOperationException();
@@ -101,6 +105,9 @@ public enum Level
       case ERROR:
         logger.error(format, arg);
         break;
+      case OFF:
+        // ignore
+        break;
       default:
         throw new UnsupportedOperationException();
     }
@@ -123,6 +130,9 @@ public enum Level
         break;
       case ERROR:
         logger.error(format, arg1, arg2);
+        break;
+      case OFF:
+        // ignore
         break;
       default:
         throw new UnsupportedOperationException();
@@ -147,6 +157,9 @@ public enum Level
       case ERROR:
         logger.error(format, args);
         break;
+      case OFF:
+        // ignore
+        break;
       default:
         throw new UnsupportedOperationException();
     }
@@ -169,6 +182,9 @@ public enum Level
         break;
       case ERROR:
         logger.error(msg, cause);
+        break;
+      case OFF:
+        // ignore
         break;
       default:
         throw new UnsupportedOperationException();
