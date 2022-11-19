@@ -40,7 +40,12 @@ public class IoHelper
     boolean stdin = "-".equals(source);
     log.debug("Open source: {}", stdin ? "STDIN" : source);
     if (stdin) {
-      return new InputStreamReader(System.in);
+      return new InputStreamReader(System.in) {
+        @Override
+        public void close() throws IOException {
+          // ignore; never allow closing of STDIN
+        }
+      };
     }
     else {
       File file = new File(source).getCanonicalFile();
@@ -56,7 +61,12 @@ public class IoHelper
     boolean stdout = "-".equals(target);
     log.debug("Open target: {}", stdout ? "STDOUT" : target);
     if (stdout) {
-      return new OutputStreamWriter(System.out);
+      return new OutputStreamWriter(System.out) {
+        @Override
+        public void close() throws IOException {
+          // ignore; never allow closing of STDOUT
+        }
+      };
     }
     else {
       File file = new File(target).getCanonicalFile();
