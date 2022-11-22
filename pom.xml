@@ -20,7 +20,7 @@
   <parent>
     <groupId>org.sonatype.buildsupport</groupId>
     <artifactId>public-parent</artifactId>
-    <version>33</version>
+    <version>36</version>
     <relativePath/>
   </parent>
 
@@ -115,23 +115,33 @@
         </executions>
       </plugin>
 
+      <!--
+      FIXME: unfortunately; the latest builds of the compiler and batch adapter are not published to Maven Central
+
+      FIXME: they are only in:
+      FIXME:    https://groovy.jfrog.io/artifactory/plugins-release/org/codehaus/groovy/groovy-eclipse-compiler
+      FIXME:    https://groovy.jfrog.io/artifactory/plugins-release/org/codehaus/groovy/groovy-eclipse-batch
+
+      FIXME: asked why here: https://github.com/groovy/groovy-eclipse/issues/1416
+      -->
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
         <dependencies>
           <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-eclipse-compiler</artifactId>
-            <version>3.7.0</version>
+            <version>3.8.0</version>
           </dependency>
           <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-eclipse-batch</artifactId>
-            <version>3.0.8-01</version>
+            <version>4.0.6-02</version>
           </dependency>
         </dependencies>
         <configuration>
-          <!-- see: https://github.com/groovy/groovy-eclipse/wiki/Groovy-Eclipse-Maven-plugin -->
           <compilerId>groovy-eclipse-compiler</compilerId>
         </configuration>
       </plugin>
