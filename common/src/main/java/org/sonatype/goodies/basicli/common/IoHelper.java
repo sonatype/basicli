@@ -33,11 +33,15 @@ public class IoHelper
 {
   private static final Logger log = LoggerFactory.getLogger(IoHelper.class);
 
+  public static final String STDIN_TOKEN = "-";
+
+  public static final String STDOUT_TOKEN = "-";
+
   /**
    * Open given argument as STDIN (if '-') or as a file reference.
    */
   public static Reader openSource(final String source) throws IOException {
-    boolean stdin = "-".equals(source);
+    boolean stdin = STDIN_TOKEN.equals(source);
     log.debug("Open source: {}", stdin ? "STDIN" : source);
     if (stdin) {
       return new InputStreamReader(System.in) {
@@ -58,7 +62,7 @@ public class IoHelper
    * Open given argument as STDOUT (if '-') or as a file reference.
    */
   public static Writer openTarget(final String target) throws IOException {
-    boolean stdout = "-".equals(target);
+    boolean stdout = STDOUT_TOKEN.equals(target);
     log.debug("Open target: {}", stdout ? "STDOUT" : target);
     if (stdout) {
       return new OutputStreamWriter(System.out) {
