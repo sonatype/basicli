@@ -34,7 +34,6 @@
     <guava.version>31.1-jre</guava.version>
     <picocli.version>4.7.0</picocli.version>
     <ant.version>1.10.11</ant.version>
-    <junit-platform.version>1.9.1</junit-platform.version>
     <junit-jupiter.version>5.9.1</junit-jupiter.version>
     <hamcrest.version>2.2</hamcrest.version>
     <mockito.version>4.8.1</mockito.version>
@@ -42,6 +41,14 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -130,36 +137,6 @@
         <groupId>org.apache.ant</groupId>
         <artifactId>ant-launcher</artifactId>
         <version>${ant.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.junit.platform</groupId>
-        <artifactId>junit-platform-commons</artifactId>
-        <version>${junit-platform.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter</artifactId>
-        <version>${junit-jupiter.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>${junit-jupiter.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>${junit-jupiter.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-params</artifactId>
-        <version>${junit-jupiter.version}</version>
       </dependency>
 
       <dependency>
