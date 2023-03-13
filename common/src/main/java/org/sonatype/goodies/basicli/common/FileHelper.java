@@ -85,11 +85,13 @@ public class FileHelper
    */
   public static String extension(final String path) {
     checkNotNull(path);
-    int i = path.lastIndexOf('.');
-    if (i == -1) {
-      return "";
+    if (!path.trim().endsWith("/")) {
+      int i = path.lastIndexOf('.');
+      if (i != -1) {
+        return path.substring(i + 1);
+      }
     }
-    return path.substring(i + 1);
+    return "";
   }
 
   public static String basename(final String filename) {
