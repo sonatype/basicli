@@ -37,6 +37,7 @@
     <junit-jupiter.version>5.9.1</junit-jupiter.version>
     <hamcrest.version>2.2</hamcrest.version>
     <mockito.version>4.8.1</mockito.version>
+    <assertj.version>3.24.2</assertj.version>
   </properties>
 
   <dependencyManagement>
@@ -167,6 +168,18 @@
         <groupId>org.objenesis</groupId>
         <artifactId>objenesis</artifactId>
         <version>3.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>${assertj.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-guava</artifactId>
+        <version>${assertj.version}</version>
       </dependency>
 
       <!-- INTERNAL -->
